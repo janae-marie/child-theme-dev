@@ -152,14 +152,14 @@ function workstation_page_description_meta() {
 		add_action( 'genesis_after_header', 'genesis_do_taxonomy_title_description', 10 );
 		add_action( 'genesis_after_header', 'workstation_close_after_header', 15 );
 	}
-	
+
 	if ( is_post_type_archive() && genesis_has_post_type_archive_support() ) {
 		remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
 		add_action( 'genesis_after_header', 'workstation_open_after_header', 5 );
 		add_action( 'genesis_after_header', 'genesis_do_cpt_archive_title_description', 10 );
 		add_action( 'genesis_after_header', 'workstation_close_after_header', 15 );
 	}
-	
+
 	if( is_author() ) {
 		remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
 		add_action( 'genesis_after_header', 'workstation_open_after_header', 5 );
@@ -173,7 +173,7 @@ function workstation_page_description_meta() {
 		add_action( 'genesis_after_header', 'workstation_add_page_description', 10 );
 		add_action( 'genesis_after_header', 'workstation_close_after_header', 15 );
 	}
-	
+
 	elseif ( is_singular() && is_page() && has_excerpt() ) {
 		remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 		add_action( 'genesis_after_header', 'workstation_open_after_header', 5 );
@@ -226,7 +226,7 @@ function workstation_widget_area_class( $id ) {
 		$class .= ' widget-uneven';
 	} elseif( $count % 2 == 0 ) {
 		$class .= ' widget-halves uneven';
-	} else {	
+	} else {
 		$class .= ' widget-halves';
 	}
 
@@ -271,3 +271,13 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Flexible Footer', 'workstation' ),
 	'description' => __( 'This is the footer section.', 'workstation' ),
 ) );
+
+//Customize Footer
+remove_action ( 'genesis_footer', 'genesis_do_footer');
+
+add_action ('genesis_footer' , 'sp_custom_footer');
+function sp_custom_footer() {
+	?>
+	<p>&copy; Copyright <?php echo date("Y"); ?> | <a href="http://jcrawshaw.github.io">Jenny Crawshaw</a> and Janae Thomson</p>
+	<?php
+}
