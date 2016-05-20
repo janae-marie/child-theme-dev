@@ -278,6 +278,7 @@ remove_action ( 'genesis_footer', 'genesis_do_footer');
 add_action ('genesis_footer' , 'sp_custom_footer');
 function sp_custom_footer() {
 	?>
-	<p>&copy; Copyright <?php echo date("Y"); ?> | <a href="http://jcrawshaw.github.io">Jen Crawshaw</a> and Janae Thomson</p>
+	<p>&copy; Copyright <?php echo date("Y"); ?> | <a href="http://jcrawshaw.github.io">Jennifer Crawshaw</a> and Janae Thomson</p>
+
 	<?php
 }
